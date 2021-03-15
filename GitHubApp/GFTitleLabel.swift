@@ -32,6 +32,6 @@ class GFTitleLabel: UILabel {
         self.minimumScaleFactor = 0.9
         self.lineBreakMode = .byTruncatingTail
         
-        self.translatesAutoresizingMaskIntoConstraints = true
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

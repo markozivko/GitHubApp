@@ -37,13 +37,13 @@ class GFAlertController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
-        self.configureAlertContailer()
+        self.configureAlertContainer()
         self.configureTitleLabel()
         self.configureActionButton()
         self.configureBodyLabel()
     }
     
-    func configureAlertContailer() {
+    func configureAlertContainer() {
         self.view.addSubview(self.alertContainer)
         
         self.alertContainer.layer.cornerRadius = 16

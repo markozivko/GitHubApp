@@ -32,7 +32,7 @@ class GFBodyLabel: UILabel {
         self.minimumScaleFactor = 0.75
         self.lineBreakMode = .byWordWrapping
         
-        self.translatesAutoresizingMaskIntoConstraints = true
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 
 }
