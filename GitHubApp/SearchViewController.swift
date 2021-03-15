@@ -20,6 +20,7 @@ class SearchViewController: UIViewController {
         self.configureLogoImageView()
         self.configureTextField()
         self.configureCallToActionButton()
+        self.createDismissKeyboardTapGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +29,18 @@ class SearchViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    func createDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func pushFollowersListViewController() {
+        let followerList = FollowersListViewController()
+        followerList.username = self.usernameTextField.text
+        followerList.title = self.usernameTextField.text
+        self.navigationController?.pushViewController(followerList, animated: true)
+    }
+        
     func configureLogoImageView() {
         self.view.addSubview(self.logoImageView)
 
@@ -43,6 +56,9 @@ class SearchViewController: UIViewController {
     }
     
     func configureTextField() {
+        
+        self.usernameTextField.delegate = self
+        
         self.view.addSubview(self.usernameTextField)
         
         NSLayoutConstraint.activate([
@@ -64,5 +80,18 @@ class SearchViewController: UIViewController {
             self.callToActionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
+        self.callToActionButton.addTarget(self, action: #selector(self.pushFollowersListViewController), for: .touchUpInside)
+        
     }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    
+    //called when user press Go or any other Return button within the keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("Did tap return")
+        self.pushFollowersListViewController()
+        return true
+    }
+    
 }
