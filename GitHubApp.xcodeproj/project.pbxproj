@@ -70,22 +70,46 @@
 		8110012325FBDB580089FFD8 /* GitHubApp */ = {
 			isa = PBXGroup;
 			children = (
+				8171C55C25FF8CF7009B08C4 /* CustomViews */,
+				8171C55B25FF8CCE009B08C4 /* Controllers */,
+				8171C55D25FF8D26009B08C4 /* Extensions */,
 				8110012425FBDB580089FFD8 /* AppDelegate.swift */,
 				8110012625FBDB580089FFD8 /* SceneDelegate.swift */,
-				8175E3CC25FE2E530006CDD6 /* GFButton.swift */,
-				8175E3CF25FE31460006CDD6 /* GFTextField.swift */,
-				8171C54825FF7151009B08C4 /* GFTitleLabel.swift */,
-				8171C54C25FF72CD009B08C4 /* GFBodyLabel.swift */,
-				8171C55325FF7401009B08C4 /* GFAlertController.swift */,
-				8110013D25FD5F750089FFD8 /* SearchViewController.swift */,
-				8171C54525FF6A31009B08C4 /* FollowersListViewController.swift */,
-				8110014025FD5FA80089FFD8 /* FavoritesViewController.swift */,
-				8171C55625FF7AFA009B08C4 /* UIViewController+Extension.swift */,
 				8110012D25FBDB590089FFD8 /* Assets.xcassets */,
 				8110012F25FBDB590089FFD8 /* LaunchScreen.storyboard */,
 				8110013225FBDB590089FFD8 /* Info.plist */,
 			);
 			path = GitHubApp;
+			sourceTree = "<group>";
+		};
+		8171C55B25FF8CCE009B08C4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8110013D25FD5F750089FFD8 /* SearchViewController.swift */,
+				8171C54525FF6A31009B08C4 /* FollowersListViewController.swift */,
+				8110014025FD5FA80089FFD8 /* FavoritesViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8171C55C25FF8CF7009B08C4 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				8175E3CC25FE2E530006CDD6 /* GFButton.swift */,
+				8175E3CF25FE31460006CDD6 /* GFTextField.swift */,
+				8171C54825FF7151009B08C4 /* GFTitleLabel.swift */,
+				8171C54C25FF72CD009B08C4 /* GFBodyLabel.swift */,
+				8171C55325FF7401009B08C4 /* GFAlertController.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		8171C55D25FF8D26009B08C4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8171C55625FF7AFA009B08C4 /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
