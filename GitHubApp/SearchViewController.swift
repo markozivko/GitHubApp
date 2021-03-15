@@ -63,7 +63,6 @@ class SearchViewController: UIViewController {
     }
     
     func configureTextField() {
-        
         self.usernameTextField.delegate = self
         
         self.view.addSubview(self.usernameTextField)
@@ -77,7 +76,6 @@ class SearchViewController: UIViewController {
     }
     
     func configureCallToActionButton() {
-        
         self.view.addSubview(self.callToActionButton)
         
         NSLayoutConstraint.activate([

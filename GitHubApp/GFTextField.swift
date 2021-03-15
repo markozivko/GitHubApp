@@ -19,7 +19,6 @@ class GFTextField: UITextField {
     }
     
     private func configure() {
-        
         self.layer.cornerRadius = 10
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.systemGray4.cgColor
