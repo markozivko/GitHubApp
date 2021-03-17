@@ -13,6 +13,8 @@
 		8110013125FBDB590089FFD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8110012F25FBDB590089FFD8 /* LaunchScreen.storyboard */; };
 		8110013E25FD5F750089FFD8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8110013D25FD5F750089FFD8 /* SearchViewController.swift */; };
 		8110014125FD5FA80089FFD8 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8110014025FD5FA80089FFD8 /* FavoritesViewController.swift */; };
+		8129047126026E900076107F /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8129047026026E900076107F /* Follower.swift */; };
+		8129047526026F4A0076107F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8129047426026F4A0076107F /* User.swift */; };
 		8171C54625FF6A31009B08C4 /* FollowersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8171C54525FF6A31009B08C4 /* FollowersListViewController.swift */; };
 		8171C54925FF7151009B08C4 /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8171C54825FF7151009B08C4 /* GFTitleLabel.swift */; };
 		8171C54D25FF72CD009B08C4 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8171C54C25FF72CD009B08C4 /* GFBodyLabel.swift */; };
@@ -31,6 +33,8 @@
 		8110013225FBDB590089FFD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8110013D25FD5F750089FFD8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8110014025FD5FA80089FFD8 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		8129047026026E900076107F /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		8129047426026F4A0076107F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8171C54525FF6A31009B08C4 /* FollowersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListViewController.swift; sourceTree = "<group>"; };
 		8171C54825FF7151009B08C4 /* GFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
 		8171C54C25FF72CD009B08C4 /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 		8110012325FBDB580089FFD8 /* GitHubApp */ = {
 			isa = PBXGroup;
 			children = (
+				8129046F26026E7D0076107F /* Model */,
 				8171C55C25FF8CF7009B08C4 /* CustomViews */,
 				8171C55B25FF8CCE009B08C4 /* Controllers */,
 				8171C55D25FF8D26009B08C4 /* Extensions */,
@@ -80,6 +85,15 @@
 				8110013225FBDB590089FFD8 /* Info.plist */,
 			);
 			path = GitHubApp;
+			sourceTree = "<group>";
+		};
+		8129046F26026E7D0076107F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8129047026026E900076107F /* Follower.swift */,
+				8129047426026F4A0076107F /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8171C55B25FF8CCE009B08C4 /* Controllers */ = {
@@ -181,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8129047526026F4A0076107F /* User.swift in Sources */,
 				8175E3D025FE31460006CDD6 /* GFTextField.swift in Sources */,
 				8171C55725FF7AFA009B08C4 /* UIViewController+Extension.swift in Sources */,
 				8110013E25FD5F750089FFD8 /* SearchViewController.swift in Sources */,
@@ -188,6 +203,7 @@
 				8171C55425FF7401009B08C4 /* GFAlertController.swift in Sources */,
 				8171C54625FF6A31009B08C4 /* FollowersListViewController.swift in Sources */,
 				8171C54D25FF72CD009B08C4 /* GFBodyLabel.swift in Sources */,
+				8129047126026E900076107F /* Follower.swift in Sources */,
 				8171C54925FF7151009B08C4 /* GFTitleLabel.swift in Sources */,
 				8110012525FBDB580089FFD8 /* AppDelegate.swift in Sources */,
 				8110014125FD5FA80089FFD8 /* FavoritesViewController.swift in Sources */,
