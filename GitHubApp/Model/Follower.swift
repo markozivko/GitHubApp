@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Follower: Codable {
+struct Follower: Codable, Hashable {
     
     //MARK: Codable protocol requires to use the same names retreived from JSON response
     
