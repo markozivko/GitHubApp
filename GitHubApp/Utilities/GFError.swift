@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GFError: String {
+enum GFError: String, Error {
     
     case invalidUsername = "This username created an invalid request, please try again."
     case unableToComplete = "Unable to complete your request. Please check your internet connection."
