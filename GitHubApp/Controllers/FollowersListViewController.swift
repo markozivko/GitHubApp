@@ -13,7 +13,9 @@ class FollowersListViewController: UIViewController {
         case main
     }
     
+    var page = 1
     var username: String!
+    var hasMoreFollowers = true
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
@@ -25,7 +27,7 @@ class FollowersListViewController: UIViewController {
         self.configureViewController()
         self.configureCollectionView()
         
-        self.getFollowers()
+        self.getFollowers(username: self.username, page: self.page)
         self.configureDataSource()
     }
     
@@ -35,8 +37,8 @@ class FollowersListViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    func getFollowers() {
-        NetworkManager.shared.getFollowers(for: username, page: 1) {[weak self] result in
+    func getFollowers(username: String, page: Int) {
+        NetworkManager.shared.getFollowers(for: username, page: page) {[weak self] result in
             
             guard let self = self else { return }
             
@@ -45,7 +47,12 @@ class FollowersListViewController: UIViewController {
                 print("Number of followers: \(followers.count)")
                 print(followers)
                 
-                self.followers = followers
+                if followers.count < 100 {
+                    self.hasMoreFollowers = false
+                }
+                
+                //MARK: we need to append because we need to add new array of followers in order to see 100 first and 100 that follow
+                self.followers.append(contentsOf: followers)
                 self.updateData()
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
@@ -62,6 +69,7 @@ class FollowersListViewController: UIViewController {
         self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: UIHelper.createThreeColumnsFlowLayout(in: self.view))
         
         self.view.addSubview(self.collectionView)
+        self.collectionView.delegate = self
         self.collectionView.backgroundColor = .systemBackground
         self.collectionView.register(FollowersCell.self, forCellWithReuseIdentifier: FollowersCell.reuseId)
     }
@@ -84,6 +92,21 @@ class FollowersListViewController: UIViewController {
         
         DispatchQueue.main.async {
             self.dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+        }
+    }
+}
+
+extension FollowersListViewController: UICollectionViewDelegate {
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            guard hasMoreFollowers else { return }
+            self.page += 1
+            getFollowers(username: self.username, page: self.page)
         }
     }
 }
