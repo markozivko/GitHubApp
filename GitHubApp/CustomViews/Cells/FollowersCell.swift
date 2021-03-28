@@ -25,6 +25,7 @@ class FollowersCell: UICollectionViewCell {
     
     func set(follower: Follower) {
         self.userNameLabel.text = follower.login
+        self.avatarImageView.downloadImage(from: follower.avatarUrl)
     }
     
     private func configure() {
