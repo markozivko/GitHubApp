@@ -36,7 +36,10 @@ class FollowersListViewController: UIViewController {
     }
     
     func getFollowers() {
-        NetworkManager.shared.getFollowers(for: username, page: 1) { result in
+        NetworkManager.shared.getFollowers(for: username, page: 1) {[weak self] result in
+            
+            guard let self = self else { return }
+            
             switch result {
             case .success(let followers):
                 print("Number of followers: \(followers.count)")
@@ -56,26 +59,11 @@ class FollowersListViewController: UIViewController {
     }
     
     func configureCollectionView() {
-        self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: createThreeColumnsFlowLayout())
+        self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: UIHelper.createThreeColumnsFlowLayout(in: self.view))
         
         self.view.addSubview(self.collectionView)
         self.collectionView.backgroundColor = .systemBackground
         self.collectionView.register(FollowersCell.self, forCellWithReuseIdentifier: FollowersCell.reuseId)
-    }
-    
-    func createThreeColumnsFlowLayout() -> UICollectionViewFlowLayout {
-        let width = self.view.bounds.width
-        let padding: CGFloat = 12
-        let spacing: CGFloat = 10
-        
-        let availableWidth = width - (padding * 2) - (spacing * 2)
-        let itemWidth = availableWidth / 3
-        
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-        flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth + 40)
-        
-        return flowLayout
     }
     
     func configureDataSource() {
