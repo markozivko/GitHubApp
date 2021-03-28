@@ -20,6 +20,7 @@
 		8129047526026F4A0076107F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8129047426026F4A0076107F /* User.swift */; };
 		8129047E26033DBB0076107F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8129047D26033DBB0076107F /* NetworkManager.swift */; };
 		813480C926107C3B005DA5F7 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813480C826107C3B005DA5F7 /* UIHelper.swift */; };
+		813480CC26109CB7005DA5F7 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813480CB26109CB7005DA5F7 /* GFEmptyStateView.swift */; };
 		8171C54625FF6A31009B08C4 /* FollowersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8171C54525FF6A31009B08C4 /* FollowersListViewController.swift */; };
 		8171C54925FF7151009B08C4 /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8171C54825FF7151009B08C4 /* GFTitleLabel.swift */; };
 		8171C54D25FF72CD009B08C4 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8171C54C25FF72CD009B08C4 /* GFBodyLabel.swift */; };
@@ -45,6 +46,7 @@
 		8129047426026F4A0076107F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8129047D26033DBB0076107F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		813480C826107C3B005DA5F7 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		813480CB26109CB7005DA5F7 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
 		8171C54525FF6A31009B08C4 /* FollowersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListViewController.swift; sourceTree = "<group>"; };
 		8171C54825FF7151009B08C4 /* GFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
 		8171C54C25FF72CD009B08C4 /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				8171C54C25FF72CD009B08C4 /* GFBodyLabel.swift */,
 				8171C55325FF7401009B08C4 /* GFAlertController.swift */,
 				811924C6260F5CB4006AF3BB /* GFAvatarImageView.swift */,
+				813480CB26109CB7005DA5F7 /* GFEmptyStateView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				8129047126026E900076107F /* Follower.swift in Sources */,
 				8171C54925FF7151009B08C4 /* GFTitleLabel.swift in Sources */,
 				811924C3260F5C3A006AF3BB /* FollowersCell.swift in Sources */,
+				813480CC26109CB7005DA5F7 /* GFEmptyStateView.swift in Sources */,
 				8129047E26033DBB0076107F /* NetworkManager.swift in Sources */,
 				8110012525FBDB580089FFD8 /* AppDelegate.swift in Sources */,
 				8110014125FD5FA80089FFD8 /* FavoritesViewController.swift in Sources */,

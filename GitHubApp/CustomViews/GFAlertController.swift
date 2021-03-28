@@ -61,7 +61,7 @@ class GFAlertController: UIViewController {
         ])
     }
     
-    func configureTitleLabel() {
+    private func configureTitleLabel() {
         self.alertContainer.addSubview(self.titleLabel)
         
         self.titleLabel.text = alertTitle ?? "Something went wrong..."
@@ -74,7 +74,7 @@ class GFAlertController: UIViewController {
         ])
     }
     
-    func configureActionButton() {
+    private func configureActionButton() {
         self.alertContainer.addSubview(self.actionButton)
         self.actionButton.setTitle(self.buttonTitle, for: .normal)
         self.actionButton.addTarget(self, action: #selector(self.dismissVC), for: .touchUpInside)
@@ -87,7 +87,7 @@ class GFAlertController: UIViewController {
         ])
     }
     
-    func configureBodyLabel() {
+    private func configureBodyLabel() {
         self.alertContainer.addSubview(self.messageLabel)
         
         self.messageLabel.text = self.message

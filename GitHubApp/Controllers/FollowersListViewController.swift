@@ -38,9 +38,11 @@ class FollowersListViewController: UIViewController {
     }
     
     func getFollowers(username: String, page: Int) {
+        self.showLoadingView()
         NetworkManager.shared.getFollowers(for: username, page: page) {[weak self] result in
             
             guard let self = self else { return }
+            self.dismissLoadingView()
             
             switch result {
             case .success(let followers):
@@ -53,6 +55,15 @@ class FollowersListViewController: UIViewController {
                 
                 //MARK: we need to append because we need to add new array of followers in order to see 100 first and 100 that follow
                 self.followers.append(contentsOf: followers)
+                
+                //MARK: here we are sure that we appened all we need, and now we can really check whether user does or doesn't have any followers
+                if self.followers.isEmpty {
+                    let message = "This user does not have any followers. Go follow them! 😄"
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
+                    }
+                    return
+                }
                 self.updateData()
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
