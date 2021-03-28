@@ -20,12 +20,14 @@ class FollowersListViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
     var followers: [Follower] = []
+    var filteredFollowers: [Follower] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configureViewController()
         self.configureCollectionView()
+        self.configureSearchController()
         
         self.getFollowers(username: self.username, page: self.page)
         self.configureDataSource()
@@ -64,7 +66,7 @@ class FollowersListViewController: UIViewController {
                     }
                     return
                 }
-                self.updateData()
+                self.updateData(on: self.followers)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
             }
@@ -96,7 +98,7 @@ class FollowersListViewController: UIViewController {
         })
     }
     
-    func updateData() {
+    func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
@@ -105,10 +107,17 @@ class FollowersListViewController: UIViewController {
             self.dataSource.apply(snapshot, animatingDifferences: true, completion: nil)
         }
     }
+    
+    func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search for a username"
+        self.navigationItem.searchController = searchController
+    }
 }
 
-extension FollowersListViewController: UICollectionViewDelegate {
-    
+extension FollowersListViewController: UICollectionViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -119,5 +128,16 @@ extension FollowersListViewController: UICollectionViewDelegate {
             self.page += 1
             getFollowers(username: self.username, page: self.page)
         }
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        
+        self.filteredFollowers = self.followers.filter { $0.login.lowercased().contains(filter.lowercased()) }
+        self.updateData(on: self.filteredFollowers)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.updateData(on: self.followers)
     }
 }
