@@ -12,6 +12,8 @@ class UserInfoViewController: UIViewController {
     let headerView = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
+    let dateLabel  = GFBodyLabel(textAlignment: .center)
+    
     
     var username: String?
 
@@ -35,6 +37,7 @@ class UserInfoViewController: UIViewController {
                     self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
                     self.add(childVC: GFRepoItemViewController(user: user), to: self.itemViewOne)
                     self.add(childVC: GFFolloweItemViewController(user: user), to: self.itemViewTwo)
+                    self.dateLabel.text = "Created at: \(user.createdAt.convertToDisplayFormat())"
                 }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
@@ -54,6 +57,7 @@ class UserInfoViewController: UIViewController {
         self.view.addSubview(self.headerView)
         self.view.addSubview(self.itemViewOne)
         self.view.addSubview(self.itemViewTwo)
+        self.view.addSubview(self.dateLabel)
         
         let padding: CGFloat = 20
         
@@ -86,6 +90,11 @@ class UserInfoViewController: UIViewController {
             self.itemViewTwo.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: padding),
             self.itemViewTwo.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -padding),
             self.itemViewTwo.heightAnchor.constraint(equalToConstant: 140),
+            
+            self.dateLabel.topAnchor.constraint(equalTo: self.itemViewTwo.bottomAnchor, constant: padding),
+            self.dateLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: padding),
+            self.dateLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -padding),
+            self.dateLabel.heightAnchor.constraint(equalToConstant: 18)
             
         ])
     }
