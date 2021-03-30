@@ -33,6 +33,8 @@ class UserInfoViewController: UIViewController {
                 print(user)
                 DispatchQueue.main.async {
                     self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
+                    self.add(childVC: GFRepoItemViewController(user: user), to: self.itemViewOne)
+                    self.add(childVC: GFFolloweItemViewController(user: user), to: self.itemViewTwo)
                 }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
@@ -60,8 +62,14 @@ class UserInfoViewController: UIViewController {
         self.itemViewOne.translatesAutoresizingMaskIntoConstraints = false
         self.itemViewTwo.translatesAutoresizingMaskIntoConstraints = false
         
-        self.itemViewOne.backgroundColor = .systemOrange
-        self.itemViewTwo.backgroundColor = .systemBlue
+        self.itemViewOne.backgroundColor = .systemBackground
+        self.itemViewOne.layer.borderWidth = 2
+        self.itemViewOne.layer.cornerRadius = 10
+        
+        self.itemViewTwo.backgroundColor = .systemBackground
+        self.itemViewTwo.layer.borderWidth = 2
+        self.itemViewTwo.layer.cornerRadius = 10
+
         
         NSLayoutConstraint.activate([
             self.headerView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
