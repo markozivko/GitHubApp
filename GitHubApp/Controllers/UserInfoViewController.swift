@@ -9,8 +9,8 @@ import UIKit
 import SafariServices
 
 protocol UserInfoViewControllerDelegate {
-    func didTapGitHubProfile()
-    func didTapGetFollowers()
+    func didTapGitHubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
 }
 
 class UserInfoViewController: UIViewController {
@@ -126,12 +126,16 @@ class UserInfoViewController: UIViewController {
 }
 
 extension UserInfoViewController: UserInfoViewControllerDelegate {
-    func didTapGitHubProfile() {
+    func didTapGitHubProfile(for user: User) {
         //present Safari VC to show the user profile
-        print("My button was tapped!")
+        guard let url = URL(string: user.htmlUrl) else {
+            self.presentGFAlertOnMainThread(title: "Invalid URL", message: "The url attached to the user is not valid.", buttonTitle: "Ok")
+            return
+        }
+        self.presentSafariViewController(with: url)
     }
     
-    func didTapGetFollowers() {
+    func didTapGetFollowers(for user: User) {
         //show list of followers for the user
     }
 }
