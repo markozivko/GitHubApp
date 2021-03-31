@@ -81,6 +81,9 @@ class FollowersListViewController: UIViewController {
     func configureViewController() {
         self.view.backgroundColor = .systemBackground
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let addFavoritesButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToFavoritesPressed))
+        self.navigationItem.rightBarButtonItem = addFavoritesButton
     }
     
     func configureCollectionView() {
@@ -119,6 +122,10 @@ class FollowersListViewController: UIViewController {
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search for a username"
         self.navigationItem.searchController = searchController
+    }
+    
+    @objc func addToFavoritesPressed() {
+        print("Add to favorites tapped")
     }
 }
 
