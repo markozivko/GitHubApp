@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SafariServices
 
 protocol UserInfoViewControllerDelegate {
     func didTapGitHubProfile(for user: User)
@@ -22,6 +21,7 @@ class UserInfoViewController: UIViewController {
     
     
     var username: String?
+    var delegate: FollowerListViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,5 +137,11 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
     
     func didTapGetFollowers(for user: User) {
         //show list of followers for the user
+        guard user.followers != 0 else {
+            self.presentGFAlertOnMainThread(title: "No followers", message: "This user has no followers. ", buttonTitle: "Ok")
+            return
+        }
+        self.delegate?.didRequestFollowers(for: user.login)
+        self.dismiss(animated: true, completion: nil)
     }
 }

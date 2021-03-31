@@ -24,5 +24,10 @@ class GFFolloweItemViewController: GFItemInfoViewController {
         self.actionButton.backgroundColor = .systemGreen
         self.actionButton.setTitle("Get Followers", for: .normal)
     }
+    
+    override func buttonPressed() {
+        guard let user = self.user else { return }
+        self.delegate.didTapGetFollowers(for: user)
+    }
 }
 
