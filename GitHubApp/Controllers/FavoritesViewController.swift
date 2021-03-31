@@ -13,5 +13,19 @@ class FavoritesViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = .systemGreen
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        PersistanceManager.retrieveFavorites { result in
+            switch result {
+            case .success(let favorites):
+                print("########\(favorites)")
+            case .failure(let error):
+                print(error.rawValue)
+            }
+        }
     }
 }
