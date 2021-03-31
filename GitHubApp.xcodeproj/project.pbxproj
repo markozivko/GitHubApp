@@ -21,6 +21,7 @@
 		8129047E26033DBB0076107F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8129047D26033DBB0076107F /* NetworkManager.swift */; };
 		813480C926107C3B005DA5F7 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813480C826107C3B005DA5F7 /* UIHelper.swift */; };
 		813480CC26109CB7005DA5F7 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813480CB26109CB7005DA5F7 /* GFEmptyStateView.swift */; };
+		814E4F70261482FF00A54F89 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814E4F6F261482FF00A54F89 /* PersistanceManager.swift */; };
 		8166A98F261309490022CF78 /* GFUserInfoHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166A98E261309490022CF78 /* GFUserInfoHeaderViewController.swift */; };
 		8166A992261309B10022CF78 /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166A991261309B10022CF78 /* GFSecondaryTitleLabel.swift */; };
 		8166A996261314AA0022CF78 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8166A995261314AA0022CF78 /* Constants.swift */; };
@@ -57,6 +58,7 @@
 		8129047D26033DBB0076107F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		813480C826107C3B005DA5F7 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		813480CB26109CB7005DA5F7 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
+		814E4F6F261482FF00A54F89 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		8166A98E261309490022CF78 /* GFUserInfoHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderViewController.swift; sourceTree = "<group>"; };
 		8166A991261309B10022CF78 /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		8166A995261314AA0022CF78 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -107,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				811924BB260F56F4006AF3BB /* Utilities */,
-				8129047726033D6A0076107F /* NetworkManager */,
+				8129047726033D6A0076107F /* Managers */,
 				8129046F26026E7D0076107F /* Model */,
 				8171C55C25FF8CF7009B08C4 /* CustomViews */,
 				8171C55B25FF8CCE009B08C4 /* Controllers */,
@@ -148,12 +150,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		8129047726033D6A0076107F /* NetworkManager */ = {
+		8129047726033D6A0076107F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				8129047D26033DBB0076107F /* NetworkManager.swift */,
+				814E4F6F261482FF00A54F89 /* PersistanceManager.swift */,
 			);
-			path = NetworkManager;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		8166A9A02613309D0022CF78 /* ViewControllers */ = {
@@ -298,6 +301,7 @@
 				8166A9992613277B0022CF78 /* GFItemInfoView.swift in Sources */,
 				8171C54625FF6A31009B08C4 /* FollowersListViewController.swift in Sources */,
 				8171C54D25FF72CD009B08C4 /* GFBodyLabel.swift in Sources */,
+				814E4F70261482FF00A54F89 /* PersistanceManager.swift in Sources */,
 				811924BD260F570C006AF3BB /* GFError.swift in Sources */,
 				8129047126026E900076107F /* Follower.swift in Sources */,
 				8171C54925FF7151009B08C4 /* GFTitleLabel.swift in Sources */,
