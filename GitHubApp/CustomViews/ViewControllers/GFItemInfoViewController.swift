@@ -15,6 +15,7 @@ class GFItemInfoViewController: UIViewController {
     let actionButton = GFButton()
     
     var user: User?
+    var delegate: UserInfoViewController!
 
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
@@ -45,6 +46,8 @@ class GFItemInfoViewController: UIViewController {
         self.stackView.addArrangedSubview(self.itemInfoViewTwo)
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         
+        self.actionButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             self.stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: padding),
             self.stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: padding),
@@ -56,5 +59,10 @@ class GFItemInfoViewController: UIViewController {
             self.actionButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -padding),
             self.actionButton.heightAnchor.constraint(equalToConstant: 44)
         ])
+    }
+    
+    //this method is empty because it will be overriden by the Repo/Follower item vc
+    @objc func buttonPressed() {
+        
     }
 }

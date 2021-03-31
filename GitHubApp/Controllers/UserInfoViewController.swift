@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import SafariServices
+
+protocol UserInfoViewControllerDelegate {
+    func didTapGitHubProfile()
+    func didTapGetFollowers()
+}
 
 class UserInfoViewController: UIViewController {
 
@@ -23,7 +29,6 @@ class UserInfoViewController: UIViewController {
         self.configureViewController()
         self.configure()
         self.getUserDataInfo()
-
     }
     
     func getUserDataInfo() {
@@ -34,16 +39,25 @@ class UserInfoViewController: UIViewController {
             case .success(let user):
                 print(user)
                 DispatchQueue.main.async {
-                    self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
-                    self.add(childVC: GFRepoItemViewController(user: user), to: self.itemViewOne)
-                    self.add(childVC: GFFolloweItemViewController(user: user), to: self.itemViewTwo)
-                    self.dateLabel.text = "Created at: \(user.createdAt.convertToDisplayFormat())"
+                    self.configureElements(with: user)
                 }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         })
-
+    }
+    
+    func configureElements(with user: User) {
+        let followerItemViewController = GFFolloweItemViewController(user: user)
+        let repoItemViewController = GFRepoItemViewController(user: user)
+        
+        followerItemViewController.delegate = self
+        repoItemViewController.delegate = self
+        
+        self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
+        self.add(childVC: repoItemViewController, to: self.itemViewOne)
+        self.add(childVC: followerItemViewController, to: self.itemViewTwo)
+        self.dateLabel.text = "Created at: \(user.createdAt.convertToDisplayFormat())"
     }
     
     func configureViewController() {
@@ -108,5 +122,16 @@ class UserInfoViewController: UIViewController {
     
     @objc func donePressed() {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension UserInfoViewController: UserInfoViewControllerDelegate {
+    func didTapGitHubProfile() {
+        //present Safari VC to show the user profile
+        print("My button was tapped!")
+    }
+    
+    func didTapGetFollowers() {
+        //show list of followers for the user
     }
 }

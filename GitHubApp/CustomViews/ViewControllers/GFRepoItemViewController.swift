@@ -24,4 +24,8 @@ class GFRepoItemViewController: GFItemInfoViewController {
         self.actionButton.backgroundColor = .systemPurple
         self.actionButton.setTitle("GitHub Profile", for: .normal)
     }
+    
+    override func buttonPressed() {
+        self.delegate.didTapGitHubProfile()
+    }
 }
